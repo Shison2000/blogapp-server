@@ -26,12 +26,12 @@ router.post("/add",async(req,res)=>{
         }
     )
     
+})
     
 router.post("/signin",async(req,res)=>{
+    let input=req.body
     let emailid=req.body.emailid
-    let  epass=req.body.password
     let data=await userModel.findOne({"emailid":emailid})
-})
 
 //console.log(input)
 if(!data)
@@ -43,7 +43,8 @@ if(!data)
     )
 }
 let dbpass=data.password
-const match=await bcrypt.compare(epass,dbpass)
+let inputpass=req.body.password
+const match=await bcrypt.compare(inputpass,dbpass)
 if(!match)
 {
     return res.json(
