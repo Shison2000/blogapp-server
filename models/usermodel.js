@@ -7,7 +7,6 @@ const userschema=new mongoose.Schema(
         pincode:String,
         emailid:String,
         password:String
-
     }
 )
 
